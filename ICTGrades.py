@@ -13,7 +13,7 @@ def letter(x):
     elif x > 50:
         y = "D"
     else:
-         y = "F"
+        y = "F"
     return y
 
 Student = str(input("Enter name: "))
