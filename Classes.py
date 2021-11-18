@@ -13,9 +13,15 @@ class Budget:
         print(f"Balance is £{statement}.")
 
 food = Budget(100)
+clothes = Budget(25)
+house = Budget(10600.45)
 
 food.deposit(200)
 
 food.withdraw(2.99)
 
+clothes.withdraw(30)
+
 food.showbalance()
+clothes.showbalance()
+house.showbalance()
