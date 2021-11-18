@@ -4,10 +4,17 @@ class Budget:
     def deposit(self, input):
         self.Balance += input
 
-    def withdrawal(self, out):
-        self.Balance -= input
+    def withdraw(self, out):
+        self.Balance -= out
     
     def showbalance (self):
-        return self.Balance
+        statement = self.Balance
+        print(f"Balance is £{statement}.")
 
 food = Budget()
+
+food.deposit(200)
+
+food.withdraw(2.99)
+
+food.showbalance()
