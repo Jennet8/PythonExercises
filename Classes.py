@@ -1,17 +1,18 @@
 class Budget:
-    Balance = 0
+    def __init__(self, balance):
+        self.balance = balance
 
     def deposit(self, input):
-        self.Balance += input
+        self.balance += input
 
     def withdraw(self, out):
-        self.Balance -= out
+        self.balance -= out
     
     def showbalance (self):
-        statement = self.Balance
+        statement = self.balance
         print(f"Balance is £{statement}.")
 
-food = Budget()
+food = Budget(100)
 
 food.deposit(200)
 
