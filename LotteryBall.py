@@ -3,6 +3,36 @@
 # which will then be used to compute the probability of picking a certain distribution of balls over a large
 # number of experiments”
 import random
+menu = 100
+
+def mainprob():
+    pink = int(input("How many pink balls are inserted: "))
+    blue = int(input("How many blue balls are inserted: "))
+    green = int(input("How many green balls are inserted: "))
+
+    ball = lotteryball(pink, blue, green)
+
+    select = int(input("How many balls do you want to pick (type 0 for a random amount): "))
+
+    if select == 0:
+        total = ball.pink+ball.blue+ball.green
+        select = random.randint(1, total)
+        print(ball.roll(select))
+    else:
+        print(ball.roll(select))
+
+def likelihood():
+    pink = int(input("How many pink balls are inserted: "))
+    blue = int(input("How many blue balls are inserted: "))
+    green = int(input("How many green balls are inserted: "))
+
+    ball = lotteryball(pink, blue, green)
+
+    d_pink = int(input("How many pinks are selected: "))
+    d_blue = int(input("How many blues are selected: "))
+    d_green = int(input("How many greens are selected: "))
+
+    print(ball.predict(d_pink, d_blue, d_green))
 
 def prob(n, t):
     p = n/t
@@ -31,17 +61,19 @@ class lotteryball:
         statement = (f"If you pull {num} balls at random, you will likely get {n_pink} pink ball(s), {n_blue} blue ball(s), and {n_green} green ball(s).")
         return statement
 
-pink = int(input("How many pink balls are inserted: "))
-blue = int(input("How many blue balls are inserted: "))
-green = int(input("How many green balls are inserted: "))
+    def predict(self, a, b, c):
+        total = self.pink + self.blue + self.green
+        p_pink = prob(self.pink, total)
+        p_blue = prob(self.blue, total)
+        p_green = prob(self.green, total)
 
-ball = lotteryball(pink, blue, green)
+        p_dis = (p_pink*a)+(p_blue*b)+(p_green*c)
+        statement = (f"There is a {p_dis}% chance of getting that distribution.")
+        return statement
 
-select = int(input("How many balls do you want to pick (type 0 for a random amount): "))
-
-if select == 0:
-    total = ball.pink+ball.blue+ball.green
-    select = random.randint(1, total)
-    print(ball.roll(select))
-else:
-    print(ball.roll(select))
+while menu != 0:
+    menu = int(input("Press '1' for probability, '2' for distribution liklihood, '0' to quit: "))
+    if menu == 1:
+        mainprob()
+    elif menu == 2:
+        likelihood()
