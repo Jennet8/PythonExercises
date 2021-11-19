@@ -5,7 +5,7 @@
 import random
 menu = 100
 
-def mainprob():
+def mainprob(): #code assumes all balls selected at once/n does not decrease between calculations
     pink = int(input("How many pink balls are inserted: "))
     blue = int(input("How many blue balls are inserted: "))
     green = int(input("How many green balls are inserted: "))
@@ -61,7 +61,7 @@ class lotteryball:
         statement = (f"If you pull {num} balls at random, you will likely get {n_pink} pink ball(s), {n_blue} blue ball(s), and {n_green} green ball(s).")
         return statement
 
-    def predict(self, a, b, c):
+    def predict(self, a, b, c):     #not functioning as intended yet
         total = self.pink + self.blue + self.green
         p_pink = prob(self.pink, total)
         p_blue = prob(self.blue, total)
